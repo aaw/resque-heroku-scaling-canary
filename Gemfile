@@ -1,6 +1,7 @@
 source "http://rubygems.org"
 
-# gem "foobar", "~> 1.2.3"
+gem 'resque', '~> 1.9'
+gem 'heroku', '~> 1.11'
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
