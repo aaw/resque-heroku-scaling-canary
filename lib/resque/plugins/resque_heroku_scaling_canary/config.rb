@@ -20,7 +20,7 @@ module Resque
 
         attr_writer :heroku_password
         def heroku_password
-          @heroku_password ||= ENV['HEROKU_PASS']
+          @heroku_password ||= ENV['HEROKU_PASSWORD']
         end
 
         attr_writer :heroku_app
