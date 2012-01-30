@@ -1,7 +1,7 @@
-Resque Heroku Scaling Canary
+resque-heroku-scaling-canary
 ============================
 
-This gem defines a Resque plugin called `Resque::Plugins::ScalingCanary` that allows you to automatically
+This gem defines a Resque plugin that allows you to automatically
 scale up the number of workers running on Heroku and then automatically scale them down once
 no work is left to do. To use, extend the module from your job:
 
@@ -43,6 +43,8 @@ better suited to systems running a largish set of batch jobs that might spawn ot
 In particular, this gem is meant to work well with jobs using 
 [resque-multi-step](https://github.com/pezra/resque-multi-step), which enqueues finalization
 jobs from within Resque tasks in a way that sometimes confuses other auto-scaling gems.
+
+This plugin works with Resque version 1.9 and above.
 
 Installation:
 -------------
