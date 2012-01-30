@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 
 gem 'resque', '~> 1.9'
-gem 'heroku', '~> 1.11'
+gem 'heroku', '~> 2.18'
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
