@@ -17,17 +17,11 @@ Jeweler::Tasks.new do |gem|
   gem.name = "resque-heroku-scaling-canary"
   gem.homepage = "http://github.com/aaw/resque-heroku-scaling-canary"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Auto-scale Heroku workers for Resque}
+  gem.description = %Q{Auto-scale Heroku workers for Resque}
   gem.email = "aaron.windsor@gmail.com"
   gem.authors = ["Aaron Windsor"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
 
-desc "Run all tests"
-RSpec::Core::RakeTask.new(:spec) do |spec|
-  spec.pattern = "spec/**/*_spec.rb"
-end
-
-task :default => :test
