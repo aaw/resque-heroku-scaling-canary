@@ -4,7 +4,7 @@ module Resque
       module Config
         extend self
 
-        @disable_scaling_if = lambda { Rails.env == 'test' }
+        @disable_scaling_if = lambda { false }
         def disable_scaling_if(&block)
           @disable_scaling_if = block
         end
@@ -18,8 +18,8 @@ module Resque
           @heroku_user ||= ENV['HEROKU_USER']
         end
 
-        attr_writer :heroku_pass
-        def heroku_pass
+        attr_writer :heroku_password
+        def heroku_password
           @heroku_pass ||= ENV['HEROKU_PASS']
         end
 
@@ -30,11 +30,11 @@ module Resque
 
         attr_writer :polling_interval
         def polling_interval
-          @polling_interval ||= 5000 
+          @polling_interval ||= 5
         end
 
         def heroku_client
-          @@heroku_client ||= Heroku::Client.new(Config.heroku_user, Config.heroku_pass)
+          @@heroku_client ||= Heroku::Client.new(Config.heroku_user, Config.heroku_password)
         end
 
       end

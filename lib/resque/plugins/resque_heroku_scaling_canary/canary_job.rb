@@ -23,7 +23,9 @@ module Resque
         end
 
         def self.non_canary_jobs_pending
-          Resque.queues.inject(0){ |accum, item| accum += Resque.size(item) unless item == @queue }
+          waiting = Resque.queues.inject(0){ |accum, item| accum += Resque.size(item) unless item == @queue }
+          being_processed = Resque.workers.find_all{ |w| w.processing["queue"] and w.processing["queue"] != @queue }.count
+          waiting + being_processed
         end
 
       end
