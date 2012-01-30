@@ -21,9 +21,11 @@ Gem::Specification.new do |s|
     "LICENSE.txt",
     "README.md",
     "Rakefile",
+    "VERSION",
     "lib/resque/plugins/resque_heroku_scaling_canary.rb",
     "lib/resque/plugins/resque_heroku_scaling_canary/canary_job.rb",
     "lib/resque/plugins/resque_heroku_scaling_canary/config.rb",
+    "resque-heroku-scaling-canary.gemspec",
     "spec/config_spec.rb",
     "spec/resque_heroku_scaling_canary_spec.rb",
     "spec/spec_helper.rb"
