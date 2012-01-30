@@ -1,3 +1,5 @@
+require 'heroku'
+
 module Resque
   module Plugins
     module ScalingCanary
