@@ -22,9 +22,9 @@ describe Resque::Plugins::ScalingCanary do
   before(:each) do
     @mock_heroku_client = Object.new
     Resque::Plugins::ScalingCanary.config do |config|
-      config.heroku_user = "stub"
-      config.heroku_password = "stub"
-      config.heroku_app = "stub"
+      config.heroku_user = "stub-user"
+      config.heroku_password = "stub-password"
+      config.heroku_app = "stub-app"
       config.polling_interval = 0
       config.stub(:heroku_client) { @mock_heroku_client }
     end
@@ -36,14 +36,14 @@ describe Resque::Plugins::ScalingCanary do
   
   describe "after_enqueue_ensure_heroku_workers" do
     it "should scale workers up to 1 if no :minimum_workers_needed method is implemented" do
-      @mock_heroku_client.should_receive(:set_workers).with(1).once
-      @mock_heroku_client.should_receive(:set_workers).with(0).once
+      @mock_heroku_client.should_receive(:set_workers).with("stub-app", 1).once
+      @mock_heroku_client.should_receive(:set_workers).with("stub-app", 0).once
       @mock_heroku_client.stub(:info) { {:workers => 0} }
       Resque.enqueue SmallBatchJob
     end
     it "should scale workers up to the number specified by :minimum_workers_needed if an implementation is provided" do
-      @mock_heroku_client.should_receive(:set_workers).with(20).once
-      @mock_heroku_client.should_receive(:set_workers).with(0).once
+      @mock_heroku_client.should_receive(:set_workers).with("stub-app", 20).once
+      @mock_heroku_client.should_receive(:set_workers).with("stub-app", 0).once
       @mock_heroku_client.stub(:info) { {:workers => 0} }
       Resque.enqueue LargeBatchJob
     end

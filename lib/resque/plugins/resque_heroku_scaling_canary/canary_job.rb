@@ -18,12 +18,12 @@ module Resque
           end
         end
 
-        def self.canary_jobs_pending
-          Resque.size(@queue)
+        def self.canary_jobs_outstanding
+          Resque.size(@queue) + Resque.workers.find_all{ |w| w.processing["queue"] == @queue }.count
         end
 
         def self.non_canary_jobs_pending
-          waiting = Resque.queues.inject(0){ |accum, item| accum += Resque.size(item) unless item == @queue }
+          waiting = Resque.queues.reject{ |q| q == @queue}.inject(0){ |accum, item| accum += Resque.size(item) }
           being_processed = Resque.workers.find_all{ |w| w.processing["queue"] and w.processing["queue"] != @queue }.count
           waiting + being_processed
         end
