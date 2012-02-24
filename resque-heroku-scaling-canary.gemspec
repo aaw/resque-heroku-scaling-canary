@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
     "lib/resque/plugins/resque_heroku_scaling_canary.rb",
     "lib/resque/plugins/resque_heroku_scaling_canary/canary_job.rb",
     "lib/resque/plugins/resque_heroku_scaling_canary/config.rb",
+    "lib/resque_heroku_scaling_canary.rb",
     "resque-heroku-scaling-canary.gemspec",
     "spec/config_spec.rb",
     "spec/resque_heroku_scaling_canary_spec.rb",
