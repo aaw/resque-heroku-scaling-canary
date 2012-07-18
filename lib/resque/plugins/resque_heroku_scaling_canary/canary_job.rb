@@ -12,7 +12,7 @@ module Resque
           Kernel.sleep Config.polling_interval
           after = self.non_canary_jobs_pending
           if before == after and before == 0
-            Config.heroku_client.set_workers(Config.heroku_app, 0)
+            Config.heroku_client.ps_scale(Config.heroku_app, :type => "worker", :qty => 0)
           else
             Resque.enqueue(self, timeout)
           end
